@@ -62,7 +62,9 @@ function Pizza() {
   );
 }
 
-function Header() {}
+function Header() {
+  <h2>Welcome to React Pizza Store</h2>;
+}
 
 function Footer() {
   return <div>We are open now {new Date().toLocaleTimeString()}</div>;
