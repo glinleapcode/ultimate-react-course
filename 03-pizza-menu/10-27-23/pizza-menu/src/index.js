@@ -65,7 +65,7 @@ function Pizza() {
 }
 
 function Header() {
-  <h1>Welcome to React Pizza Store</h1>;
+  return <h1>Welcome to React Pizza Store</h1>;
 }
 
 function Footer() {
