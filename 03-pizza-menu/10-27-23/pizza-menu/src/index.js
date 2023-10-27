@@ -49,8 +49,6 @@ function App() {
   return (
     <div>
       <h1>Hello React!!!</h1>
-      <Pizza />
-      <Pizza />
     </div>
   );
 }
@@ -60,6 +58,22 @@ function Pizza() {
     <div>
       <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
       <h2>Pizza Spinaci</h2>
+    </div>
+  );
+}
+
+function Header() {}
+
+function Footer() {
+  return <div>We are open now {new Date().toLocaleTimeString()}</div>;
+}
+
+function Menu() {
+  return (
+    <div>
+      <h2>Our Menu</h2>
+      <Pizza />
+      <Pizza />
     </div>
   );
 }
