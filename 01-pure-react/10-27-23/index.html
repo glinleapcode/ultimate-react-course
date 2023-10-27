@@ -13,7 +13,7 @@
     <script>
       function App() {
         const time = new Date().toLocaleDateString();
-        return React.createElement("header", null, "Hello React");
+        return React.createElement("header", null, `Hello React! It's ${time}`);
       }
 
       const root = ReactDOM.createRoot(document.getElementById("root"));
