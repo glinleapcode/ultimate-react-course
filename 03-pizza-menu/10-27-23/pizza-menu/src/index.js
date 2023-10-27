@@ -50,12 +50,18 @@ function App() {
     <div>
       <h1>Hello React!!!</h1>
       <Pizza />
+      <Pizza />
     </div>
   );
 }
 
 function Pizza() {
-  return <h2>Pizza</h2>;
+  return (
+    <div>
+      <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
+      <h2>Pizza Spinaci</h2>
+    </div>
+  );
 }
 
 //React v18
