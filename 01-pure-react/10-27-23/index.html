@@ -12,7 +12,8 @@
 
     <script>
       function App() {
-        return React.createElement("header");
+        const time = new Date().toLocaleDateString();
+        return React.createElement("header", null, "Hello React");
       }
 
       const root = ReactDOM.createRoot(document.getElementById("root"));
