@@ -58,8 +58,8 @@ function App() {
 function Pizza() {
   return (
     <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-      <h2>Pizza Spinaci</h2>
+      <img src="pizzas/spinach.jpg" alt="Pizza Spinach" />
+      <h2>Pizza Spinach</h2>
     </div>
   );
 }
