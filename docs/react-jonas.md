@@ -44,16 +44,7 @@ HTML page from `react.dev` to try React locally
       root.render(<MyApp />);
 
     </script>
-    <!--
-      Note: this page is a great way to try React but it's not suitable for production.
-      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
 
-      Read this page for starting a new React project with JSX:
-      https://react.dev/learn/start-a-new-react-project
-
-      Read this page for adding React with JSX to an existing project:
-      https://react.dev/learn/add-react-to-an-existing-project
-    -->
 
   </body>
 </html>
@@ -213,10 +204,6 @@ The project is the same as the one we created using npm init and installing the 
 
 - We can also use the spread operator to overwrite an existing property. `const updatedBook = {...book, movieReleaseDate: "2021-12-31", pages: 1210};` will create a new object with the properties in the book object and the movieReleaseDate property set to "2021-12-31". The pages property will also be overwritten and updated to 1210.
 
-```javascript
-
-```
-
 ### Template Literals
 
 - Template literals are a way to create strings. We use the backtick `` to create a template literal. We can use the dollar sign and curly braces to insert a variable into a template literal. We can also use the dollar sign and curly braces to insert an expression into a template literal. We can also use the dollar sign and curly braces to insert a function call into a template literal. We can also use the dollar sign and curly braces to insert a ternary operator into a template literal.
@@ -339,3 +326,16 @@ function getTotalReviewCount(book) {
 ### Asynchronous JavaScript: Promises
 
 ### Asynchronous JavaScript: Async/Await
+
+## Section 6: States, Events, and Forms: Interactive Components
+
+### What is State?
+
+![state](./images/state.png)
+
+- state is used by a component to hold its own data, instead of getting data from its parent component via `props` . The data can also hold over time and persist between renders. Also, `state` can help make our app interactive and can change the UI of the component as a result of some action / events.
+- state is data that a component can hold over time, necessary for information that it needs to remember throughout the app’s lifecycle
+- It is the component’s memory.
+- An example of state can be a notification count, the text of an input field, active tab in a tabs component, the content of a shopping cart
+- state variable / piece of state: a single variable in a component(component state).
+- The term state is more about the entire state of the component which can contain many variables.
