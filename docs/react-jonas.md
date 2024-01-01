@@ -518,13 +518,13 @@ function Form() {
 
 #### State vs. Props
 
-| State                                        | Props                                                                                      |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| State is internal data, owned by Component   | Props are external data, owned by parent component                                         |
-| State is component's memory                  | Props are component's configuration                                                        |
-| State can be updated inside component        | Read-only                                                                                  |
-| Updating state causes component to re-render | receiving new props causes component to re-render(Usually when the parent's state updated) |
-| state is used to make component interactive  | props are used to make component configurable                                              |
+| State                                        | Props                                                                                                 |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| State is internal data, owned by Component   | Props are external data, owned by parent component                                                    |
+| State is component's memory                  | Props are component's configuration                                                                   |
+| State can be updated inside component        | Read-only                                                                                             |
+| Updating state causes component to re-render | receiving new props causes component to re-render(Usually when the parent's state updated)            |
+| state is used to make component interactive  | props are used to make component configurable, used by parent to configure child component "settings" |
 
 ## Section 7: Thinking In React: State Management
 
