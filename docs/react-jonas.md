@@ -340,6 +340,9 @@ function getTotalReviewCount(book) {
 
 ### What is "Thinking in React"?
 
+- React Mindset. Have a clear mental model of how and when to use all the React tools, such as components, state, data flow, effects, etc.
+- Thinking in state transitions, not element mutations. Think about how the state of your app changes over time, not how to mutate the DOM elements to get to the next state.
+
 ### Fundamentals of State Management
 
 ### Thinking About State and Lifting State Up
