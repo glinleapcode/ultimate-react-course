@@ -8,6 +8,7 @@ const initialItems = [
 ];
 
 function App() {
+  const [items, setItems] = useState(initialItems);
   return (
     <div className="App">
       <Logo />
@@ -29,7 +30,7 @@ function Form() {
     e.preventDefault(); // prevent reload when submit
     if (!description) return;
     const newItem = { description, quantity, packed: false, id: Date.now() };
-    console.log(newItem);
+
     setDescription("");
     setQuantity(1);
   }
