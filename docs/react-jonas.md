@@ -522,6 +522,7 @@ function Form() {
 | ------------------------------------------ | -------------------------------------------------- |
 | State is internal data, owned by Component | Props are external data, owned by parent component |
 | State is component's memory                | Props are component's configuration                |
+| State can be updated inside component      | Read-only                                          |
 
 ## Section 7: Thinking In React: State Management
 
