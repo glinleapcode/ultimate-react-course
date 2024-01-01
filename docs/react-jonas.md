@@ -381,7 +381,17 @@ function Item({ item }) {
 
 ### Building a Form and Handling Submissions
 
+#### Create 1-20 Options in a Select Element
 
+```javascript
+<select name="" id="">
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+```
 
 ## Section 7: Thinking In React: State Management
 
