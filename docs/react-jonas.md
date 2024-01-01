@@ -396,6 +396,10 @@ function Item({ item }) {
 - `Array.from({ length: 20 }, (_, i) => i + 1)` creates an array with 20 items. The items are numbers from 1 to 20. The first argument is an object with a length property. The second argument is a callback function. The callback function takes the current item and the current index as arguments. The callback function returns a new item. The new item is added to the new array. `_` is the current item. `i` is the current index.
 - We use the `map()` method to render the options and each option is assigned a value from 1 to 20, we need to add a key prop to each option so that React can keep track of each option.
 
+#### Handling Form Submission
+
+- We need to prevent the default behavior of the HTML form element, which is to reload the page when the form is submitted(When click the submit button or press enter). We use the `e.preventDefault()` method to prevent the default behavior of the HTML form element.
+
 ```javascript
 function Form() {
   function handleSubmit(e) {
