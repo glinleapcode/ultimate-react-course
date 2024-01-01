@@ -336,6 +336,23 @@ function getTotalReviewCount(book) {
 - state variable / piece of state: a single variable in a component(component state).
 - The term state is more about the entire state of the component which can contain many variables.
 
+### Rendering Items List
+
+```javascript
+function PackingList() {
+  return (
+    <div className="list">
+      <ul>
+        {initialItems.map((item) => (
+          // the key prop needs to be on the direct children of the array being mapped over
+          <Item key={item.id} item={item} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+
 ## Section 7: Thinking In React: State Management
 
 ### What is "Thinking in React"?
@@ -378,3 +395,4 @@ function getTotalReviewCount(book) {
 ### Sorting Items
 
 ### Clearing the List
+```
