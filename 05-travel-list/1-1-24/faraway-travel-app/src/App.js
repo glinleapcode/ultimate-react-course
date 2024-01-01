@@ -24,6 +24,7 @@ function Logo() {
 function Form() {
   function handleSubmit(e) {
     e.preventDefault(); // prevent reload when submit
+    console.log(e);
   }
 
   return (
