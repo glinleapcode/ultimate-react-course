@@ -356,6 +356,10 @@ function getTotalReviewCount(book) {
 
 ### Fundamentals of State Management
 
+- State management: deciding when to create pieces of state, what types of state are necessary, where to place each piece of state, and how data flows through the app (giving each piece of state a home)
+- Local state: state that is only by one or few components
+- Global state: state that is used by many components. shared state that is accessible to every component in the app. Can use `React Context` API or `Redux` to manage global state.
+
 ![state management](./images/statemanagement.png)
 
 ### Thinking About State and Lifting State Up
