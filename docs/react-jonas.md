@@ -67,7 +67,7 @@ HTML page from `react.dev` to try React locally
 </script>
 ```
 
-`root.render(React.createElement(App)); `is doing two things:
+`root.render(React.createElement(App));`is doing two things:
 
 - `React.createElement(App)` is creating an instance of the App component. This is the equivalent of writing `<App />` in JSX.
 
@@ -105,7 +105,7 @@ HTML page from `react.dev` to try React locally
 #### React useState and useEffect First Look
 
 - We use the `React.useState()` hook to create a state variable. The `useState()` hook returns an array with two elements. The first element is the state variable and the second element is a function that we can use to update the state variable. We pass the initial value of the state variable to the `useState()` hook as an argument.
-- `React.useEffect(...) ` is a hook that lets you perform side effects in function components. Side effects could be data fetching, subscriptions, or manually changing the DOM. In this case, the side effect is setting up an interval.
+- `React.useEffect(...)` is a hook that lets you perform side effects in function components. Side effects could be data fetching, subscriptions, or manually changing the DOM. In this case, the side effect is setting up an interval.
 
 ```html
 <!DOCTYPE html>
@@ -342,6 +342,17 @@ function getTotalReviewCount(book) {
 
 - React Mindset. Have a clear mental model of how and when to use all the React tools, such as components, state, data flow, effects, etc.
 - Thinking in state transitions, not element mutations. Think about how the state of your app changes over time, not how to mutate the DOM elements to get to the next state.
+- The "thinking in react" process:
+  1. Break the desired UI into components and establish the component hierarchy.
+  2. Build a static version of the UI(without state).
+  3. Think about state:
+     - When to use state
+     - Types of state: local vs global
+     - Where to place each piece of state
+  4. Establish data flow:
+     - one-way data flow
+     - child to parent communication
+     - Accessing global state
 
 ### Fundamentals of State Management
 
