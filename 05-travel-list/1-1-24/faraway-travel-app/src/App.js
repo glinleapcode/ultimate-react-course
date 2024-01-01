@@ -30,20 +30,18 @@ function Form() {
 
 function PackingList() {
   return (
-    <ul className="list">
-      {initialItems.map((item) => (
-        <Item item={item} />
-      ))}
-    </ul>
+    <div className="list">
+      <ul>
+        {initialItems.map((item) => (
+          <Item item={item} />
+        ))}
+      </ul>
+    </div>
   );
 }
 
 function Item({ item }) {
-  return (
-    <div className="list">
-      <li>{item.description}</li>
-    </div>
-  );
+  return <li key={item.id}>{item.description}</li>;
 }
 
 function Stats() {
