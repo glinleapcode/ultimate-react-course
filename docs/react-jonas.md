@@ -469,6 +469,8 @@ function Form() {
 }
 ```
 
+- If only set up the first two steps, the input element will be read-only and its value is alway the initial state value and cannot be changed. We need to set up the third step to make the input element editable, which is to tell React to update the state variable when the user makes changes to the input element.
+
 ## Section 7: Thinking In React: State Management
 
 ### What is "Thinking in React"?
