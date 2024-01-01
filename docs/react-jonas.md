@@ -434,7 +434,7 @@ function Form() {
 - We can write anything in the input field and then it will get synchronized with the state. So now it is in fact React that owns the state and is controlling the state. **The state is the single source of truth for the data. The input element is just a way to display the data and let the user interact with the data. The input element is controlled by React.**
 - There are three steps to create a controlled element:
   1. Create a state variable to hold the value of the input element. `const [value, setValue] = useState("");`
-  2. Set the value of the input element to the state variable. `<input type="text" value={value} />`
+  2. Set the value of the input element to the state variable. `<input type="text" value={value} />`. We force the element we want to control to have the value of the state variable.
   3. Set the state variable to the value of the input element when the user makes changes to the input element. `<input type="text" value={value} onChange={(e) => setValue(e.target.value)} />`
 
 ```javascript
