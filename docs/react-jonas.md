@@ -192,10 +192,6 @@ The project is the same as the one we created using npm init and installing the 
 
 - Array destructing is a way to extract items from an array and assign them to variables. We use the square brackets to destructure an array. We put the variable names inside the square brackets. We can also rename the variables when destructuring an array. We use the colon to rename a variable. We put the new variable name before the colon and the old variable name after the colon. We can also set default values for the variables when destructuring an array. We use the equal sign to set a default value. We put the default value after the equal sign. `const [first, second] = numbers;` is the same as `const first = numbers[0]; const second = numbers[1];`
 
-```javascript
-
-```
-
 ### Rest and Spread Operators
 
 - The rest operator is used to get the remaining items in an array. We use the rest operator to get the remaining items in an array when destructuring an array. We use the rest operator to get the remaining items in an array when destructuring an array. `const [first, second, ...others] = numbers;` is the same as `const first = numbers[0]; const second = numbers[1]; const others = numbers.slice(2);`
@@ -339,3 +335,5 @@ function getTotalReviewCount(book) {
 - An example of state can be a notification count, the text of an input field, active tab in a tabs component, the content of a shopping cart
 - state variable / piece of state: a single variable in a component(component state).
 - The term state is more about the entire state of the component which can contain many variables.
+
+## Section 7: Thinking In React: State Management
