@@ -356,6 +356,8 @@ function getTotalReviewCount(book) {
 
 ### Fundamentals of State Management
 
+![state management](./images/statemanagement.png)
+
 ### Thinking About State and Lifting State Up
 
 ### Deleting an Item: More Child to Parent Communication
