@@ -33,6 +33,7 @@ function PackingList() {
     <div className="list">
       <ul>
         {initialItems.map((item) => (
+          // the key prop needs to be on the direct children of the array being mapped over
           <Item key={item.id} item={item} />
         ))}
       </ul>
