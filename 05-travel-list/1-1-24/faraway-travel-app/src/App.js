@@ -1,7 +1,14 @@
 import "./index.css";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
+    </div>
+  );
 }
 
 function Logo() {
