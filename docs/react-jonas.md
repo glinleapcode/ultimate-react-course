@@ -377,6 +377,8 @@ function Item({ item }) {
 }
 ```
 
+- We conditionally add a line-through style to the span element if the item is packed. We use the ternary operator to conditionally add the style. We use an empty object to remove the style.
+
 ## Section 7: Thinking In React: State Management
 
 ### What is "Thinking in React"?
