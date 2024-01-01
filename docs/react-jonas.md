@@ -524,6 +524,7 @@ function Form() {
 | State is component's memory                  | Props are component's configuration                                                        |
 | State can be updated inside component        | Read-only                                                                                  |
 | Updating state causes component to re-render | receiving new props causes component to re-render(Usually when the parent's state updated) |
+| state is used to make component interactive  | props are used to make component configurable                                              |
 
 ## Section 7: Thinking In React: State Management
 
