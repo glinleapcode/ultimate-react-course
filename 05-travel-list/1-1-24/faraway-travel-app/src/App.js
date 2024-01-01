@@ -24,6 +24,7 @@ function Logo() {
 
 function Form() {
   const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState("0");
   function handleSubmit(e) {
     e.preventDefault(); // prevent reload when submit
     console.log(e);
