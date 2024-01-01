@@ -404,7 +404,3 @@ function Item({ item }) {
 ### Sorting Items
 
 ### Clearing the List
-
-```
-
-```
