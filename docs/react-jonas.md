@@ -337,3 +337,21 @@ function getTotalReviewCount(book) {
 - The term state is more about the entire state of the component which can contain many variables.
 
 ## Section 7: Thinking In React: State Management
+
+### What is "Thinking in React"?
+
+### Fundamentals of State Management
+
+### Thinking About State and Lifting State Up
+
+### Deleting an Item: More Child to Parent Communication
+
+### Updating an Item: Complext Immutable Data Operations
+
+### Derived State
+
+### Calculating Statistics as Derived State
+
+### Sorting Items
+
+### Clearing the List
