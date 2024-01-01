@@ -518,11 +518,12 @@ function Form() {
 
 #### State vs. Props
 
-| State                                      | Props                                              |
-| ------------------------------------------ | -------------------------------------------------- |
-| State is internal data, owned by Component | Props are external data, owned by parent component |
-| State is component's memory                | Props are component's configuration                |
-| State can be updated inside component      | Read-only                                          |
+| State                                        | Props                                                                                      |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| State is internal data, owned by Component   | Props are external data, owned by parent component                                         |
+| State is component's memory                  | Props are component's configuration                                                        |
+| State can be updated inside component        | Read-only                                                                                  |
+| Updating state causes component to re-render | receiving new props causes component to re-render(Usually when the parent's state updated) |
 
 ## Section 7: Thinking In React: State Management
 
