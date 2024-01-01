@@ -480,6 +480,42 @@ function Form() {
 5. Because the state has changed, React re-renders the component.
 6. During the re-render, the input field's value is set to the current state value, so the input field now displays the new value that the user typed in.
 
+- We apply the same process to the select element.
+
+```javascript
+function Form() {
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  function handleSubmit(e) {
+    e.preventDefault(); // prevent reload when submit
+    console.log(e);
+  }
+
+  return (
+    <form className="add-form" onSubmit={handleSubmit}>
+      <h3>What do you need for your trip? 😍</h3>
+      <select
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+      >
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+      <input
+        type="text"
+        value={description}
+        placeholder="Item..."
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <button>Add</button>
+    </form>
+  );
+}
+```
+
 ## Section 7: Thinking In React: State Management
 
 ### What is "Thinking in React"?
