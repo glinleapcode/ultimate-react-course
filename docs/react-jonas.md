@@ -518,9 +518,10 @@ function Form() {
 
 #### State vs. Props
 
-| State                                             | Props                                                                    |
-| ------------------------------------------------- | ------------------------------------------------------------------------ |
-| State is used by a component to hold its own data | Props are used to pass data from a parent component to a child component |
+| State                                      | Props                                              |
+| ------------------------------------------ | -------------------------------------------------- |
+| State is internal data, owned by Component | Props are external data, owned by parent component |
+| State is component's memory                | Props are component's configuration                |
 
 ## Section 7: Thinking In React: State Management
 
