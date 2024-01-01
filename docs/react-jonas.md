@@ -362,6 +362,21 @@ function Item({ item }) {
 - `map()` takes a callback function as an argument. The callback function takes the current item as an argument and returns a new item. The new item is added to the new array. The new array is returned by `map()`.
 - React uses the key prop to identify each child in the list and determine whether the specific node has changed, been added, or removed. It's important to note that the `key` prop needs to be on the direct children of the array being mapped over. The direct children of the array are the `Item` components, not the `li` elements. Therefore, the key prop should be on the Item component, not the `li` element.
 
+#### Conditionally Rendering Item: Adding styles
+
+```javascript
+function Item({ item }) {
+  return (
+    <li>
+      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+        {item.quantity} {item.description}
+      </span>
+      <button>❌</button>
+    </li>
+  );
+}
+```
+
 ## Section 7: Thinking In React: State Management
 
 ### What is "Thinking in React"?
