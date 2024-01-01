@@ -1,4 +1,5 @@
 import "./index.css";
+import { useState } from "react";
 
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
@@ -22,6 +23,7 @@ function Logo() {
 }
 
 function Form() {
+  const [description, setDescription] = useState("");
   function handleSubmit(e) {
     e.preventDefault(); // prevent reload when submit
     console.log(e);
@@ -37,7 +39,7 @@ function Form() {
           </option>
         ))}
       </select>
-      <input type="text" placeholder="Item..." />
+      <input type="text" value={description} placeholder="Item..." />
       <button>Add</button>
     </form>
   );
