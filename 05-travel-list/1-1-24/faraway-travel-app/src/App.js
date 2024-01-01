@@ -41,7 +41,7 @@ function PackingList() {
 }
 
 function Item({ item }) {
-  return <li key={item.id}>{item.description}</li>;
+  return <li>{item.description}</li>;
 }
 
 function Stats() {
