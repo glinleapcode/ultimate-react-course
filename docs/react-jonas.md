@@ -438,6 +438,7 @@ function Form() {
 
 ```javascript
 function Form() {
+  // step 1
   const [description, setDescription] = useState("");
   function handleSubmit(e) {
     e.preventDefault(); // prevent reload when submit
@@ -456,8 +457,10 @@ function Form() {
       </select>
       <input
         type="text"
+        // step 2
         value={description}
         placeholder="Item..."
+        // step 3
         onChange={(e) => setDescription(e.target.value)}
       />
       <button>Add</button>
