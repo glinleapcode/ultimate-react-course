@@ -12,8 +12,8 @@ function App() {
   return (
     <div className="App">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form setItems={setItems} />
+      <PackingList items={items} />
       <Stats />
     </div>
   );
@@ -23,13 +23,14 @@ function Logo() {
   return <h1>🌴Far Away 🌊</h1>;
 }
 
-function Form() {
+function Form({ setItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
   function handleSubmit(e) {
     e.preventDefault(); // prevent reload when submit
     if (!description) return;
     const newItem = { description, quantity, packed: false, id: Date.now() };
+    setItems((prevItems) => [...prevItems, newItem]);
 
     setDescription("");
     setQuantity(1);
@@ -59,11 +60,11 @@ function Form() {
   );
 }
 
-function PackingList() {
+function PackingList({ items }) {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (
+        {items.map((item) => (
           // the key prop needs to be on the direct children of the array being mapped over
           <Item key={item.id} item={item} />
         ))}
