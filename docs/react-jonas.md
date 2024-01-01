@@ -436,6 +436,36 @@ function Form() {
   2. Set the value of the input element to the state variable. `<input type="text" value={value} />`
   3. Set the state variable to the value of the input element when the user makes changes to the input element. `<input type="text" value={value} onChange={(e) => setValue(e.target.value)} />`
 
+```javascript
+function Form() {
+  const [description, setDescription] = useState("");
+  function handleSubmit(e) {
+    e.preventDefault(); // prevent reload when submit
+    console.log(e);
+  }
+
+  return (
+    <form className="add-form" onSubmit={handleSubmit}>
+      <h3>What do you need for your trip? 😍</h3>
+      <select name="" id="">
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+      <input
+        type="text"
+        value={description}
+        placeholder="Item..."
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <button>Add</button>
+    </form>
+  );
+}
+```
+
 ## Section 7: Thinking In React: State Management
 
 ### What is "Thinking in React"?
@@ -478,3 +508,7 @@ function Form() {
 ### Sorting Items
 
 ### Clearing the List
+
+```
+
+```
