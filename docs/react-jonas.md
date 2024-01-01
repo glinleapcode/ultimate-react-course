@@ -429,7 +429,8 @@ function Form() {
 
 ### Controlled Elements
 
-- A
+- A controlled element is an element whose value is controlled by React. It is an input element like `input`, `textarea`, or `select` that gets its current value from React state and updates the state when the user make changes to it.
+- The reason we need controlled elements is to have a single source of truth for the data. In html, the data is stored and manipulated in the DOM. In React, instead of letting the DOM handle the input data, React controls what is displayed in these elements and keeps track the input data in sync with the React state. This makes it easier to manipulate form data and validate user input.
 
 ## Section 7: Thinking In React: State Management
 
