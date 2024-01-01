@@ -27,7 +27,8 @@ function Form() {
   const [quantity, setQuantity] = useState(1);
   function handleSubmit(e) {
     e.preventDefault(); // prevent reload when submit
-    console.log(e);
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    console.log(newItem);
   }
 
   return (
