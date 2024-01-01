@@ -401,7 +401,7 @@ function Item({ item }) {
 - We need to prevent the default behavior of the HTML form element, which is to reload the page when the form is submitted(When click the submit button or press enter). We use the `e.preventDefault()` method to prevent the default behavior of the HTML form element.
 - We can keep track of the event by either using the `onSubmit` event handler on the form element or the `onClick` event handler on the submit button. We use the `onSubmit` event handler on the form element because it is more accessible. The `onSubmit` event handler is triggered when the form is submitted, either by clicking th
 - Note that we cannot use `{handleSubmit()}` because it will be called immediately when the component is rendered. We need to use `{handleSubmit}` instead, so that React will call the function when the form is submitted. We can also use an arrow function to call the function when the form is submitted. `{(e) => handleSubmit(e)}` is the same as `{handleSubmit}`.
-- `e` is the event object, it is created by the browser when the form is submitted and it is passed to the event handler when the form is submitted.
+- `e` is the event object, it is created by the browser when the form is submitted and it is passed to the event handler when the form is submitted. It contains information about the event, such as the target element, the type of the event, etc.
 
 ```javascript
 function Form() {
@@ -426,6 +426,8 @@ function Form() {
   );
 }
 ```
+
+### Controlled Elements
 
 ## Section 7: Thinking In React: State Management
 
