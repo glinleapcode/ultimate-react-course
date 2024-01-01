@@ -22,7 +22,9 @@ function Logo() {
 }
 
 function Form() {
-  function handleSubmit() {}
+  function handleSubmit(e) {
+    e.preventDefault(); // prevent reload when submit
+  }
 
   return (
     <form className="add-form" onSubmit={handleSubmit}>
