@@ -951,4 +951,97 @@ function Stats({ items }) {
 
 ### Sorting Items
 
+```javascript
+function PackingList({ items, onDeleteItem, onToggleItem }) {
+  const [sortBy, setSortBy] = useState("input");
+
+  let sortedItems;
+
+  if (sortBy === "input") sortedItems = items;
+  if (sortBy === "description")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => a.description.localeCompare(b.description));
+  if (sortBy === "packed")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => Number(a.packed) - Number(b.packed));
+
+  return (
+    <div className="list">
+      <ul>
+        {sortedItems.map((item) => (
+          <Item
+            key={item.id}
+            item={item}
+            onDeleteItem={onDeleteItem}
+            onToggleItem={onToggleItem}
+          />
+        ))}
+      </ul>
+      <div className="actions">
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="input">sort by input order</option>
+          <option value="description">sort by description</option>
+          <option value="packed">sort by packed status</option>
+        </select>
+      </div>
+    </div>
+  );
+}
+```
+
+- We create a select element to allow the user to sort the items by input order, description, or packed status.
+- We create a `sortBy` state to keep track of the current sort order. We set the initial value of `sortBy` to "input". This means the enter order is the default sort order. We make the select element a controlled element by setting the value of the select element to the `sortBy` state. We set the `onChange` event handler to call the `setSortBy` callback function and pass it the value of the select element.
+- We need to `slice()` the items to get a copy first so that we don't mutate the original items array. Then we can use the `sort()` method to sort the items. We can use the `localeCompare()` method to sort the items by description. `localeCompare()` compares two strings in the current locale and return either -1, 1 or 0. `localCompare` is case-insensitive and accent-insensitive. It is useful for sorting strings in alphabetical order(???)
+
 ### Clearing the List
+
+- We add a new button "clear list" to the `PackingList` component. When the button is clicked, we want to clear the items state. We need to pass the `onClearList` callback function to the `PackingList` component as a prop. Then inside the `PackingList` component, when the button is clicked, we can call the `onClearList` callback function. The `onClearList` callback function will clear the items state in the `App` component.
+
+```javascript
+function App() {
+  const [items, setItems] = useState([]);
+
+
+  function handleClearList() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all items?"
+    );
+    if (confirmed) setItems([]);
+  }
+
+  return (
+    <div className="App">
+      <Logo />
+      <Form onAddItem={handleAddItem} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+        onClearList={handleClearList}
+      />
+      <Stats items={items} />
+    </div>
+  );
+}
+function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
+  const [sortBy, setSortBy] = useState("input");
+
+...
+
+  return (
+    <div className="list">
+      ...
+      <div className="actions">
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="input">sort by input order</option>
+          <option value="description">sort by description</option>
+          <option value="packed">sort by packed status</option>
+        </select>
+        <button onClick={onClearList}>Clear List</button>
+      </div>
+    </div>
+  );
+}
+```
