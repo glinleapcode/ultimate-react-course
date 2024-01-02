@@ -839,6 +839,79 @@ export default App;
 
 ### Updating an Item: Complex Immutable Data Operations
 
+```javascript
+import "./index.css";
+import { useState } from "react";
+
+function App() {
+  const [items, setItems] = useState([]);
+
+  function handleToggleItem(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
+
+  return (
+    <div className="App">
+      <Logo />
+      <Form onAddItem={handleAddItem} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+      />
+      <Stats />
+    </div>
+  );
+}
+
+
+function PackingList({ items, onDeleteItem, onToggleItem }) {
+  return (
+    <div className="list">
+      <ul>
+        {items.map((item) => (
+          <Item
+            key={item.id}
+            item={item}
+            onDeleteItem={onDeleteItem}
+            onToggleItem={onToggleItem}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Item({ item, onDeleteItem, onToggleItem }) {
+  return (
+    <li>
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => {
+          onToggleItem(item.id);
+        }}
+      />
+      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+        {item.quantity} {item.description}
+      </span>
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
+    </li>
+  );
+}
+
+export default App;
+```
+
+- We add a `<input type="checkbox" />` to the `Item` component. If the checkbox is checked, the `packed` field of the item will be set to `true`. If `packed` is true, we add a line-through style to the span element. If `packed` is false, we remove the line-through style from the span element. `<span style={item.packed ? { textDecoration: "line-through" } : {}}>`
+- We need to pass the `onToggleItem` callback function to the `Item` component as a prop. Then inside the `Item` component, when the checkbox is clicked, we can call the `onToggleItem` callback function and pass it the id of the item to be updated. The `onToggleItem` callback function will update the items state in the `App` component.
+- We use `map()` to update the item with id = `id`. We use the spread operator to copy the properties of the current item. We set the `packed` property to the opposite of the current `packed` property. `items.map((item) => item.id === id ? { ...item, packed: !item.packed } : item)`
+- We also make this checkbox a controlled element. We set the value of the checkbox to the `packed` property of the item. We set the `onChange` event handler to call the `onToggleItem` callback function and pass it the id of the item to be updated.
+
 ### Derived State
 
 ### Calculating Statistics as Derived State
