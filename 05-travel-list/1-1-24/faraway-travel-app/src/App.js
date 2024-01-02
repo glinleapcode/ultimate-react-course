@@ -9,11 +9,21 @@ const initialItems = [
 
 function App() {
   const [items, setItems] = useState(initialItems);
+
+  const handleAddItem = (item) => {
+    setItems((prevItems) => [...prevItems, item]);
+  };
+
+  const handleDeleteItem = (id) => {
+    const updatedItems = items.filter((item) => id !== item.id);
+    setItems(updatedItems);
+  };
+
   return (
     <div className="App">
       <Logo />
-      <Form setItems={setItems} />
-      <PackingList items={items} />
+      <Form onAddItem={handleAddItem} />
+      <PackingList items={items} onDeleteItem={handleDeleteItem} />
       <Stats />
     </div>
   );
@@ -23,14 +33,15 @@ function Logo() {
   return <h1>🌴Far Away 🌊</h1>;
 }
 
-function Form({ setItems }) {
+function Form({ onAddItem }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
+
   function handleSubmit(e) {
     e.preventDefault(); // prevent reload when submit
     if (!description) return;
     const newItem = { description, quantity, packed: false, id: Date.now() };
-    setItems((prevItems) => [...prevItems, newItem]);
+    onAddItem(newItem);
 
     setDescription("");
     setQuantity(1);
@@ -60,26 +71,26 @@ function Form({ setItems }) {
   );
 }
 
-function PackingList({ items }) {
+function PackingList({ items, onDeleteItem }) {
   return (
     <div className="list">
       <ul>
         {items.map((item) => (
           // the key prop needs to be on the direct children of the array being mapped over
-          <Item key={item.id} item={item} />
+          <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item }) {
+function Item({ item, onDeleteItem }) {
   return (
     <li>
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
-      <button>❌</button>
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
     </li>
   );
 }

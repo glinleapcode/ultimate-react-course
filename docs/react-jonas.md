@@ -557,7 +557,11 @@ function Form() {
 
 ### Thinking About State and Lifting State Up
 
+- Whenever multiple sibling components need to share the same state, we need to lift the state up to their common ancestor. The common ancestor can be a parent component or a grandparent component.
+
 - We now want the app to be able to add new item and render the new item in the list. We need to use `items` state to store the items. We need to lift the `items` state up to the `App` component because the `Form` component and the `PackingList` component both need access to the `items` state. We need to pass the `setItems` state to the `Form` component and "items" to the `PackingList` component as props.
+
+#### Passing `setItems` to Form
 
 ```javascript
 
@@ -658,7 +662,180 @@ function Stats() {
 export default App;
 ```
 
+#### Passing `onAddItem` Callback Function to Form
+
+- We can also updating the items state in the `App` component by passing a callback function to the `Form` component. We can pass the `onAddItem` callback function to the `Form` component as a prop. Then inside the `Form` component, when the form is submitted, we can call the `onAddItem` callback function and pass it the new item. The `onAddItem` callback function will update the items state in the `App` component.
+- This way the Form component doesn't need to know about the details of how the items state is updated, it just needs to call the callback function with the new item.
+
+```javascript
+function App() {
+  const [items, setItems] = useState(initialItems);
+  const handleAddItem = (item) => {
+    setItems((prevItems) => [...prevItems, item]);
+  };
+  return (
+    <div className="App">
+      <Logo />
+      <Form onAddItem={handleAddItem} />
+      <PackingList items={items} />
+      <Stats />
+    </div>
+  );
+}
+
+function Form({ onAddItem }) {
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  function handleSubmit(e) {
+    e.preventDefault(); // prevent reload when submit
+    if (!description) return;
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    onAddItem(newItem);
+
+    setDescription("");
+    setQuantity(1);
+  }
+
+  return (
+    <form className="add-form" onSubmit={handleSubmit}>
+      <h3>What do you need for your trip? 😍</h3>
+      <select
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+      >
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+      <input
+        type="text"
+        value={description}
+        placeholder="Item..."
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <button>Add</button>
+    </form>
+  );
+}
+```
+
+- I often confused about what is the prop's name using this method. In the `App` component, `<Form onAddItem={handleAddItem} />` is passed to the `Form` component as a prop. In the `Form` component, we can access the prop by using `props.onAddItem`. We can also destructure the prop and use `onAddItem` directly.
+
 ### Deleting an Item: More Child to Parent Communication
+
+```javascript
+import "./index.css";
+import { useState } from "react";
+
+const initialItems = [
+  { id: 1, description: "Passports", quantity: 2, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: true },
+  { id: 3, description: "Charger", quantity: 1, packed: false },
+];
+
+function App() {
+  const [items, setItems] = useState(initialItems);
+
+  const handleAddItem = (item) => {
+    setItems((prevItems) => [...prevItems, item]);
+  };
+
+  const handleDeleteItem = (id) => {
+    const updatedItems = items.filter((item) => id !== item.id);
+    setItems(updatedItems);
+  };
+
+  return (
+    <div className="App">
+      <Logo />
+      <Form onAddItem={handleAddItem} />
+      <PackingList items={items} onDeleteItem={handleDeleteItem} />
+      <Stats />
+    </div>
+  );
+}
+
+function Logo() {
+  return <h1>🌴Far Away 🌊</h1>;
+}
+
+function Form({ onAddItem }) {
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(1);
+
+  function handleSubmit(e) {
+    e.preventDefault(); // prevent reload when submit
+    if (!description) return;
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    onAddItem(newItem);
+
+    setDescription("");
+    setQuantity(1);
+  }
+
+  return (
+    <form className="add-form" onSubmit={handleSubmit}>
+      <h3>What do you need for your trip? 😍</h3>
+      <select
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+      >
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+      <input
+        type="text"
+        value={description}
+        placeholder="Item..."
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <button>Add</button>
+    </form>
+  );
+}
+
+function PackingList({ items, onDeleteItem }) {
+  return (
+    <div className="list">
+      <ul>
+        {items.map((item) => (
+          // the key prop needs to be on the direct children of the array being mapped over
+          <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Item({ item, onDeleteItem }) {
+  return (
+    <li>
+      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+        {item.quantity} {item.description}
+      </span>
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
+    </li>
+  );
+}
+
+function Stats() {
+  return (
+    <footer className="stats">
+      <em>💼 You have X items on your list, and you already packed X (X%)</em>
+    </footer>
+  );
+}
+
+export default App;
+```
+
+- We need to pass the `onDeleteItem` callback function to the `Item` component as a prop. Then inside the `Item` component, when the delete button is clicked, we can call the `onDeleteItem` callback function and pass it the id of the item to be deleted. The `onDeleteItem` callback function will update the items state in the `App` component.
+- The `filter()` method creates a new array with all the elements that return true from the callback function. The callback function takes the current item as an argument and returns a boolean value. If the callback function returns `true`, the current item will be added to the new array. If the callback function returns `false`, the current item will not be added to the new array.
 
 ### Updating an Item: Complex Immutable Data Operations
 
@@ -669,7 +846,3 @@ export default App;
 ### Sorting Items
 
 ### Clearing the List
-
-```
-
-```
