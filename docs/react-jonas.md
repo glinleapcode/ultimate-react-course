@@ -914,7 +914,40 @@ export default App;
 
 ### Derived State
 
+- Derived state is state that is calculated from other state. For example, we can calculate the number of items that are packed and the number of items that are not packed from the `items` state. We can also calculate the percentage of items that are packed from the `items` state.
+
 ### Calculating Statistics as Derived State
+
+- We can calculate the number of items that are packed and the number of items that are not packed from the `items` state. We can also calculate the percentage of items that are packed from the `items` state.
+- We count the number of items that are packed by using the `filter()` method `items.filter((item) => item.packed).length;`
+- We use conditional rendering to render different text based on the percentage of items that are packed.
+- If no items are packed, we render "Please start packing your items for the trip 🐱‍🏍".
+- If all items are packed, we render "You got everything! Ready to go ✔".
+
+```javascript
+function Stats({ items }) {
+  if (items.length === 0) {
+    return (
+      <p className="stats">
+        <em>Please start packing your items for the trip 🐱‍🏍</em>
+      </p>
+    );
+  }
+  const totalItems = items.length;
+  const itemsPacked = items.filter((item) => item.packed).length;
+  const percentage = Math.round((itemsPacked / totalItems) * 100);
+  return (
+    <footer className="stats">
+      <em>
+        {percentage === 100
+          ? "You got everything! Ready to go ✔ "
+          : `💼 You have ${totalItems} items on your list, and you already packed ${itemsPacked} (${percentage}%)`}
+      </em>
+    </footer>
+  );
+}
+
+```
 
 ### Sorting Items
 
