@@ -1045,3 +1045,25 @@ function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
   );
 }
 ```
+
+### Moving Components into Separate Files
+
+### Exercise #1: Accordion
+
+<details><summary>Code</summary>
+
+</details>
+
+### The Children Prop: Making a reusable Button
+
+### Exercise #2: Accordion v2
+
+<details><summary>Code</summary>
+
+</details>
+
+### Challenge 1: Tip Calculator
+
+<details><summary>Code</summary>
+
+</details>
